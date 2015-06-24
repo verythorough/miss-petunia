@@ -1,0 +1,456 @@
+/* =MOVE TUMBLR CONTROLS= */
+#tumblr_controls { 
+	top: 1.8em;
+}
+
+/* =BASE STYLES= */
+html {
+    overflow-y: scroll;
+}
+body, input, textarea {
+    color: #444;
+    font: 100%/1.5 Carme, helvetica, arial, sans-serif;
+}
+article, aside, figcaption, figure, footer, header, main, nav, section {
+    display: block;
+}
+h1, h2, h3, .short-quote {
+    margin: 0;
+    line-height: 1;
+    font-weight: normal;
+    font-family: Cookie, 'Lucida Handwriting', 'Brush Script MT', 'Zapf Chancery', 'Apple Chancery', Zapfino;
+}
+h1 {
+    font-size: 3em;
+}
+h2, .short-quote {
+    font-size: 2.5em;
+}
+h3 {
+    margin-left: 0.5em;
+    font-family: Carme, helvetica, arial, sans-serif;
+}
+ul, ol, p, blockquote, .note {
+    margin: 0.5em 0;
+    line-height: 1.2;
+}
+ul, ol {
+    padding-left: 3em;
+}
+blockquote {
+    margin: 0.5em 1em;
+    border-left: 5px solid #E19DDA;
+    padding: 0 0 0 1em;
+    clear: both;
+}
+a:link, a:visited {
+    color: #982299;
+    text-decoration: none;
+}
+a:focus, a:hover {
+    text-decoration: underline;
+}
+img {
+    vertical-align: middle;
+    border: none;
+}
+/* =LAYOUT STYLES= */
+ #header, #footer {
+    text-align: center;
+    clear: both;
+}
+#menu-bar {
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 4;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.menu, #masthead, #main, #footer {
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+    padding: 0;
+    position: relative;
+}
+.float-list {
+    margin: 0;
+    padding: 0;
+}
+.float-list > li {
+    float: left;
+    margin-right: 0.5em;
+    padding-left: 0;
+    list-style: none;
+}
+.sprite {
+    background: url(http://static.tumblr.com/bmrhdxg/28Hmy33kp/spriconsv2x.png) no-repeat 0 0;
+    background-size: 258px 69px;
+}
+/* =MODULE STYLES= */
+#masthead h1 {
+    margin: 0.2em 0 0.1em 0;
+    font: 100px/0.6'Cookie', serif;
+}
+#masthead a {
+    color: #fff;
+    display: block;
+}
+#masthead a:hover {
+    text-decoration: none;
+}
+#pages {
+    float: left;
+    margin: 4px 0;
+    text-align: left;
+}
+#pages i {
+    display: inline-block;
+    width: 17px;
+    height: 18px;
+    margin-right: 3px;
+    vertical-align: text-bottom;
+}
+#pages a > span {
+    display: none;
+    margin-right: 0.5em;
+}
+#nav-home {
+    background-position: -65px -44px;
+}
+#nav-about {
+    background-position: -85px -44px;
+}
+#nav-ask {
+    background-position: -105px -44px;
+}
+#nav-rss {
+    background-position: -125px -44px;
+}
+#sub-opt {
+    display: none;
+}
+#sub-verb {
+    display: inline;
+    margin-right: 0;
+}
+#search {
+    float: right;
+    margin: 3px 0;
+    border-radius: 4px;
+    border: 1px solid #E19DDA;
+    padding: 0 0.2em;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.4);
+    font-size: 80%;
+}
+#search-text {
+    width: 100px;
+    border: none;
+    background: transparent;
+    color: #982299;
+    line-height: 1;
+}
+#search-button {
+    vertical-align: text-bottom;
+    height: 16px;
+}
+#page-heading, .post-card, #post-notes, #disqus_thread {
+    margin-bottom: 1em;
+    overflow: hidden;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 4px;
+}
+#page-heading {
+    padding: 1em 2%;
+}
+.pretty-date a {
+    position: absolute;
+    margin-top: -12px;
+    left: -4%;
+    height: 60px;
+    width: 60px;
+    padding-top: 10px;
+    color:#fff;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1;
+    text-transform: uppercase;
+    text-decoration: none;
+    z-index: 3;
+}
+.pretty-date span {
+    display: block;
+}
+.day {
+    font-size: 24px;
+    margin-top: -3px;
+}
+.post-media {
+    margin: 0 auto 0.8em;
+    text-align: center;
+}
+.post-media img {
+    width: 100%;
+    height: auto;
+}
+/* Photoset Styles */
+ .clearit:before, .clearit:after {
+    content:"";
+    display: table;
+}
+.clearit:after {
+    clear: both;
+}
+.clearit {
+    *zoom: 1;
+}
+.custom-photoset .row {
+    clear: both;
+    width: 101%;
+    /*+1% to avoid gaps due to rounding*/
+}
+.photoset-photo {
+    position: relative;
+    display: block;
+    float: left;
+    margin-bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+.photoset-photo img {
+    width: 100%;
+    height: auto;
+}
+.photoset-photo:first-child img {
+    margin-left: 0;
+}
+.custom-photoset .count-1 {
+    width: 100%;
+}
+.custom-photoset .count-2 {
+    width: 50%;
+}
+.custom-photoset .count-3 {
+    width: 33.33%;
+}
+.post-text, .post-footer {
+    margin: 0 3% 0.5em;
+}
+.post-text img {
+    display: block;
+    margin: auto;
+}
+.photo-source {
+    text-align: right;
+    font-size: 85%;
+    font-style: italic;
+}
+.post-title, .quote-content, .asker {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    float: right;
+    margin-right: 5%;
+    padding: 15px 0 0.2em 60px;
+}
+.long-quote, .medium-quote {
+    font-size: 120%;
+    text-indent: -0.4em;
+}
+.quote-source {
+    text-align: center;
+    padding-left: 30%;
+}
+.chat-lines {
+    list-style-type: none;
+}
+.chat-name {
+    color: #333;
+    font-weight: bold;
+}
+.question {
+    margin-bottom: 1em;
+    display: inline-block;
+    border-radius: 3px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    width: 100%;
+    padding: 0.5em;
+    background-color: rgba(225, 157, 218, 0.35);
+}
+.asker-avatar {
+    float: left;
+    margin-right: 0.5em;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 40px;
+}
+.post-footer {
+    border-top: 1px dotted #BF3AB2;
+    overflow: hidden;
+    padding: 0.5em 0;
+    font-size: 85%;
+}
+.share-links {
+    float: right;
+    padding: 0;
+}
+.share-links > li {
+    float: right;
+    margin-left: 5px;
+    list-style: none;
+    background-position: -205px -44px;
+    width: 25px;
+    height: 25px;
+}
+.like_button, .reblog_button, .social-open {
+    margin: 5px auto;
+    width: 16px;
+    display:block;
+}
+.social-open {
+    height: 12px;
+    background-position: -145px -44px;
+}
+.social-pop {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    padding: 5px;
+    right: 8%;
+    margin-top: -110px;
+    background-color: #E19DDA;
+    border-radius: 4px;
+}
+.social-close {
+    float: right;
+    line-height: 1;
+}
+.short-url input {
+    border: none;
+    width: 100%;
+}
+.short-url, .social-link {
+    margin: 5px;
+}
+.social-link {
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+.facebook {
+    background-position: -65px 0;
+}
+.twitter {
+    background-position: -110px 0;
+}
+.pinterest {
+    background-position: -155px 0;
+}
+.google {
+    background-position: -200px 0;
+}
+.tags {
+    background-position: -245px 1px;
+    margin-bottom: 0.5em;
+    height: 14px;
+    padding-left: 15px;
+}
+.discuss-links {
+    clear: left;
+}
+.discuss-links > li {
+    height: 14px;
+    padding-left: 15px;
+}
+.permalink {
+    background-position: -245px -29px;
+}
+.comment-link {
+    background-position: -245px -14px;
+}
+.note-link {
+    background-position: -245px -44px;
+}
+#disqus_thread {
+    display: none;
+    float: left;
+    margin-right: 1em;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+}
+#disqus_thread, #post-notes {
+    padding: 1em;
+}
+.notes {
+    padding-left: 20px;
+    text-indent: -20px;
+    font-size: 90%;
+    list-style-type: none;
+}
+.note {
+    margin-bottom: 0.5em;
+}
+.note blockquote {
+    text-indent: 0;
+}
+.avatar {
+    vertical-align: middle;
+    margin-right: 5px;
+    border-radius: 2px;
+}
+.left-page {
+    float: left;
+    margin-right: 2%;
+}
+.right-page {
+    float: right;
+    margin-left: 2%;
+}
+#footer-links {
+    display: inline-block;
+}
+.copyright {
+    clear: both;
+    padding: 1em 0;
+    font-size: 80%;
+}
+.copyright > span {
+    display: inline-block;
+}
+.hide {
+    display: none;
+    visibility: hidden;
+}
+.invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+}
+@media (min-width: 540px) {
+    #pages a > span {
+        display: inline;
+    }
+    #sub-verb {
+        display: none;
+    }
+}
+@media (min-width: 700px) {
+    body {
+        background-image: url(http://static.tumblr.com/bmrhdxg/nDUmy31ue/furbg0.jpg);
+        background-size: 100% 100%;
+    }
+    #disqus_thread {
+        width: 60%;
+    }
+}
