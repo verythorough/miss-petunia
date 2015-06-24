@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<!-- Miss Petunia's custom theme by Jessica Parsons -->
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {block:SearchPage}{lang:Search results for SearchQuery} | {/block:SearchPage}
+            {block:DayPage}{lang:Posted on Month DayOfMonth Year} | {/block:DayPage}
+            {block:TagPage}{lang:Posts tagged Tag} | {/block:TagPage}
+            {block:PermalinkPage}{block:PostTitle}{PostTitle} | {/block:PostTitle}{/block:PermalinkPage}
+            {Title}
+            {block:IndexPage} | {lang:Page CurrentPage of TotalPages} {/block:IndexPage}
+            {block:PermalinkPage}{block:PostSummary} | {PostSummary}...{/block:PostSummary}{/block:PermalinkPage}</title>
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        <link rel="alternate" type="application/rss+xml" href="{RSS}" />
+        <link rel="shortcut icon" href="{Favicon}" />
+        <link rel="apple-touch-icon" href="{PortraitURL-128}" />
+        <link href='http://fonts.googleapis.com/css?family=Cookie|Carme' rel='stylesheet' type='text/css'>
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]--><!--replace later with downloaded version-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <!--Test with and without this setting-->
+
+        <!-- DEFAULT VARIABLES -->
+        <meta name="text:Disqus Shortname" content="misspetunia" />
+        <!--Quick simple style for fast load on mobile-->
+        <style>
+            body { margin: 0; padding: 0; background: #FDF3DA url(http://static.tumblr.com/bmrhdxg/jNnmy315u/gradtext30.jpg) repeat-x top left fixed; background-size: 78px 100%; }
+        </style>
+        <link href='http://static.tumblr.com/bmrhdxg/GC4n9alm4/petstyle.css' rel='stylesheet' type='text/css'>
+        <script>
+            //Analytics script
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-51522884-1', 'miss-petunia.com');
+            ga('send', 'pageview');
+        </script>
+    </head>
+
+    <body>
+        <div id="header">
+            <div id="menu-bar">
+                <div class="menu">
+                    <ul id="pages" class="float-list">
+                        <li><a href="/"><i id="nav-home" class="sprite"></i><span>{lang:Home}</span></a></li>
+                        {block:HasPages}
+                        {block:Pages}
+                        <li><a href="{URL}"><i id="nav-about" class="sprite"></i><span>{Label}</span></a></li>
+                        {/block:Pages}
+                        {/block:HasPages}
+                        {block:AskEnabled}
+                            <li><a href="/ask"><i id="nav-ask" class="sprite"></i><span>{AskLabel}</span></a></li>
+                        {/block:AskEnabled}
+                        <li><a id="sub-link" href="/subscribe"><i id="nav-rss" class="sprite"></i><span>Subscribe</span></a>
+                            <div id="sub-opt">
+                                <span id="sub-verb">Subscribe</span>
+                                by <a href="/subscribe" target="_blank">Email</a>
+                                or <a href="/rss" target="_blank">RSS</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form id="search" action="/search" method="get">
+                        <label for="search-text" class="invisible">Search Terms</label>
+                        <input type="text" name="q" id="search-text" title="search"  placeholder="{lang:Search}" />
+                        <input type="image" src="http://static.tumblr.com/bmrhdxg/Qsamxs8di/search.png" alt="Submit Search" id="search-button">
+                    </form>
+                </div><!-- .menu -->
+            </div><!-- #menu-bar -->
+            <div id="masthead">
+                <h1><a href="/">{Title}</a></h1>
+            </div><!-- #masthead -->
+        </div><!-- #header -->
+        <div id="main">
+            {block:DayPage}
+            <div id="page-heading">
+                <h1>{lang:Posted on Month DayOfMonth Year}</h1> 
+            </div>
+            {/block:DayPage}
+            {block:TagPage}
+            <div id="page-heading">
+                <h1>{lang:Posts tagged Tag}</h1> 
+            </div>
+            {/block:TagPage}
+            {block:SearchPage}
+            <div id="page-heading">
+                <h1>{lang:Search results for SearchQuery}</h1>
+                <h3>{lang:SearchResultCount results}</h3>
+                {block:NoSearchResults}
+                <p>Sorry, there are no posts containing "{SearchQuery}".  Please try a different term, or visit the <a href="/archive">Archive</a>.</p>
+                {/block:NoSearchResults}
+            </div>
+            {/block:SearchPage}
+            {block:Posts}
+                <div id="post-{PostID}" class="post-card {PostType}-post">
+                    {block:Date}
+                        <div class="pretty-date">
+                             <a class="sprite" href="/day/{year}/{MonthNumberWithZero}/{DayOfMonthWithZero}"><span>{ShortMonth}</span><span class="day">{DayOfMonth}</span><span>{Year}</span></a>
+                        </div><!-- .pretty-date -->
+                    {/block:Date}
+                    {block:Text}
+                        <div class="post-text">
+                            {block:Title}<h2 class="post-title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                            {Body}
+                        </div>
+                    {/block:Text}
+                        {block:Photo}
+                            <div class="post-media">
+                                {block:IndexPage}<a href="{Permalink}">{/block:IndexPage}
+                                {block:PermalinkPage}{LinkOpenTag}{/block:PermalinkPage}
+                                    <img src="{PhotoURL-HighRes}" class="photo" alt="{PhotoAlt}" />
+                                {LinkCloseTag}
+                            </div>
+                            {block:Caption}<div class="post-text caption">{Caption}</div>{/block:Caption}
+                        {/block:Photo}
+                        {block:Panorama}
+                            <div class="post-media">
+                                {block:IndexPage}<a href="{Permalink}">{/block:IndexPage}
+                                {block:PermalinkPage}{LinkOpenTag}{/block:PermalinkPage}
+                                    <img src="{PhotoURL-Panorama}" class="panorama" alt="{PhotoAlt}" />
+                                {LinkCloseTag}
+                            </div>
+                            {block:Caption}<div class="post-text caption">{Caption}</div>{/block:Caption}
+                        {/block:Panorama}
+                        {block:Photoset}
+                            <div class="post-media">
+                                <div class="custom-photoset" id="photoset_{PostID}" data-layout="{PhotosetLayout}">
+                                    {block:Photos}
+                                    <div class="photoset-photo">
+                                        <a class="tumblr-box" rel="post-{PostID}" href="{PhotoURL-HighRes}">
+                                            <img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" class="{block:Caption}caption-yes{/block:Caption}"  {block:Caption}data-caption="{PlaintextCaption}"{/block:Caption}>
+                                        </a>
+                                    </div>
+                                    {/block:Photos}
+                                </div><!-- .custom-photoset -->
+                            </div><!-- .post-media -->
+                            {block:Caption}<div class="post-text caption">{Caption}</div>{/block:Caption}
+                        {/block:Photoset}
+                        {block:Quote}
+                            <div class="post-text">
+                                <div class="quote-content {length}-quote">"{Quote}"</div>
+                                {block:Source}<p class="quote-source">~ {Source}</p>{/block:Source}
+                            </div>
+                        {/block:Quote}
+                        {block:Link}
+                            <div class="post-text">
+                                <h2 class="post-title">Check this out:</h2>
+                                <div class="question">
+                                {block:Thumbnail}<div class="asker-avatar"><img src="{Thumbnail}" class="link-pic" width="40"></div>{/block:Thumbnail}
+                                <h3><a href="{URL}" {Target}>{Name}</a></h3>
+                                {block:Host}<div class="host">{Host}</div>{/block:Host}
+                                </div>
+                                {block:Description}<div class="description">{Description}</div>{/block:Description}
+                            </div>
+                        {/block:Link}
+                        {block:Chat}
+                            <div class="post-text">
+                                {block:Title}<h2 class="post-title"><a href="{Permalink}">{Title}</a></h2>{/block:Title}
+                                <ul class="chat-lines">
+                                    {block:Lines}
+                                        <li class="{Alt} user_{UserNumber}">
+                                            {block:Label}<span class="chat-name">{Label}</span>{/block:Label}
+                                            {Line}
+                                        </li>
+                                    {/block:Lines}
+                                </ul>
+                            </div>
+                        {/block:Chat}
+                        {block:Audio}
+                            <div class="post-media">{AudioPlayerGrey}</div>
+                            {block:Caption}<div class="post-text caption">{Caption}</div>{/block:Caption}
+                        {/block:Audio}
+                        {block:Video}
+                            <div class="post-media">{Video-500}</div>
+                            {block:Caption}<div class="post-text caption">{Caption}</div>{/block:Caption}
+                        {/block:Video}
+                        {block:Answer}
+                            <div class="post-text">
+                                <h2 class="post-title">{lang:Asker asked 2}:</h2>
+                                <div class="question">
+                                    <div class="asker-avatar"><img src="{AskerPortraitURL-40}"alt="{Asker}'s avatar" /></div>
+                                    {Question}
+                                </div>
+                                {Answer}
+                            </div>
+                        {/block:Answer}
+                    <div class="post-footer">
+                        <ul class="share-links">
+                            <li title="Like" class="sprite">{LikeButton color="white" size="16"}</li>
+                            <li title="Reblog" class="sprite">{ReblogButton color="white" size="16"}</li>
+                            <li class="social-button sprite"><a title="Share" class="sprite social-open" href="{Permalink}"></a></li>
+                        </ul><!-- .share-links -->
+                        <div class="social-pop">
+                            <a class="social-close" href="javascript:void(0)" title="Close">X</a>
+                            <div class="short-url">
+                                <p>Short URL<br>
+                                <input type="text" readonly="" value="{ShortURL}"></p>
+                            </div>
+                            <div>
+                                <a class="facebook social-link sprite" title="Share on facebook" href="javascript:window.open('https://www.facebook.com/sharer.php?u={URLEncodedPermalink}', '_blank', 'width=626,height=436')"></a>
+                                <a class="twitter social-link sprite" title="Tweet this" href="javascript:window.open('https://twitter.com/intent/tweet?url={URLEncodedShortURL}', '_blank', 'width=550,height=450')"></a>
+                                <a class="pinterest social-link sprite" title="Pin it" href="javascript:window.open('http://pinterest.com/pin/create/button/?url={URLEncodedPermalink}&amp;media={URLEncodedPhotoURL-HighRes}&amp;description={PlaintextCaption}', '_blank', 'width=770,height=300')"></a>
+                                <a class="google social-link sprite" title="Share on google+" href="javascript:window.open('https://plusone.google.com/_/+1/confirm?hl=en&amp;url={URLEncodedPermalink}', '_blank', 'height=450,width=480')"></a>
+                            </div>
+                        </div><!-- .social-pop -->
+                        {block:HasTags}
+                        <ul class="tags float-list sprite">
+                            {block:Tags}<li><a href="{TagURL}" class="single-tag">#{Tag}</a></li>{/block:Tags}
+                        </ul><!-- .tags -->
+                        {/block:HasTags}
+                        <ul class="discuss-links float-list">
+                            {block:IndexPage}
+                                <li class="permalink sprite"><a href="{Permalink}">{lang:Permalink}</a></li>
+                                <li class="comment-link sprite"><a href="{Permalink}#disqus_thread"> Comments</a></li>
+                                <li class="note-link sprite"><a href="{Permalink}#post-notes">{NoteCountWithLabel}</a></li>
+                            {/block:IndexPage}
+                            {block:PermalinkPage}
+                                <li id="comment-loader" class="comment-link sprite hide"><a href="#disqus_thread"><span>Show</span>  Comments</a></li>
+                                <li id="note-loader" class="note-link sprite hide"><a href="#post-notes"><span>Show</span> Notes</a></li>
+                                <noscript><li class="comment-link sprite"><a href="http://{text:Disqus Shortname}.disqus.com/?url=ref">See comments on Disqus</a></li></noscript>
+                            {/block:PermalinkPage}
+                        </ul><!-- .discuss-links -->
+                    </div><!-- .post-footer -->
+                </div><!-- post-card -->
+                {block:PermalinkPage}
+                    <div id="discussion">
+                        {block:IfDisqusShortname}
+                        <div id="disqus_thread"></div>
+                        {/block:IfDisqusShortname}
+                        <div id="post-notes">
+                            <h2>{NoteCountWithLabel}</h2>
+                            {block:PostNotes}{PostNotes}{/block:PostNotes}
+                        </div><!-- #post-notes -->
+                    </div><!-- #discussion -->
+                {/block:PermalinkPage}
+            {/block:Posts}
+        </div><!-- #main -->
+        <div id="footer">
+            {block:Pagination}
+            <div class="pagination">
+                {block:PreviousPage}<span class="left-page"><a href="{PreviousPage}">{lang:Newer}</a></span>{/block:PreviousPage}
+                {block:NextPage}<span class="right-page"><a href="{NextPage}">{lang:Older}</a></span>{/block:NextPage}
+            </div><!-- .pagination -->
+            {/block:Pagination}
+            {block:DayPagination}
+            <div class="pagination">
+                {block:PreviousDayPage}<span class="left-page"><a href="{PreviousDayPage}">{lang:Previous day}</a></span>{/block:PreviousDayPage}
+                {block:NextDayPage}<span class="right-page"><a href="{NextDayPage}">{lang:Next day}</a></span>{/block:NextDayPage}
+            </div><!-- .pagination -->
+            {/block:DayPagination}
+            <div id="footer-links">
+                    <span class="archive"><a href="/archive">{lang:Archive}</a> | </span>
+                    <span class="random"><a href="/random">{lang:Random}</a></span>
+            </div>
+            <div class="copyright">
+                <span>&copy;{CopyrightYears} <a href="/">{Title}</a>. </span>
+                <span>All Rights Reserved. </span>
+                <span>Custom theme by </span>
+                <span>Jessica Parsons</span>
+            </div>
+        </div><!-- #footer -->
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="http://static.tumblr.com/bmrhdxg/9EUmtpuf1/pxuphotoset.js"></script>
+        <script src="http://static.tumblr.com/bmrhdxg/AzImzdop6/petscripts.js"></script>
+
+        <script>
+            //Media resizing script
+            var newW = parseFloat($("#main").css("width"));
+            var newH = newW * 0.5625;
+            $(".video-post .post-media iframe").attr("width", newW).attr("height", newH);
+            $(".tumblr_video_container").css({ width: newW + 'px', height: newH + 'px' });
+            {block:IndexPage}
+            //Comment count
+            var disqus_shortname = '{text:Disqus Shortname}';
+            (function (d) {
+                s = d.createElement('script');
+                s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+                (d.getElementsByTagName('body')[0]).appendChild(s);
+            }(document));
+            {/block:IndexPage}
+            {block:PermalinkPage}
+            //Show/hide comments and notes
+            $(function () {
+                $('#post-notes').hide();
+                $('#comment-loader').one('click', function () {
+                   $.ajaxSetup({cache:true});
+                   $.getScript('http://{text:Disqus Shortname}.disqus.com/embed.js');
+                   $.ajaxSetup({cache:false});
+                }).add('#note-loader').removeClass('hide').click(function (e) {
+                    var $this = $(this),
+                        action = $this.find('span'),
+                        target = $this.find('a').attr('href');
+                    action.text(action.text() == "Show" ? "Hide" : "Show");
+                    $(target).toggle(100);
+                    if(window.innerWidth < 700) {
+                        $this.siblings().find("span").text("Show");
+                        $(target).siblings().hide();
+                    }
+                    e.preventDefault();
+                });       
+            });
+            {/block:PermalinkPage}
+        </script>
+
+    </body>
+
+</html>
